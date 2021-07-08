@@ -1,0 +1,17 @@
+{% extends 'marketplace/base.html' %}
+
+{% block body %}
+    {% for item in detail %}
+        <div class="row">
+            <div class="col-md-3 offset-md-2">
+                <img class="card" height="150px" src="{{ item.image }}"/>
+            </div>
+            <div class="col-md-4">
+                <h3>Product Name : {{ item.name }}</h3>
+                <h5>Sale Price : ${{ item.sale_price}}</h5>
+                <h5>Viewed by : {{ item.friend_name }}</h5>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+

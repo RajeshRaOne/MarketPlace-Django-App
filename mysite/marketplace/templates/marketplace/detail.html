@@ -1,0 +1,40 @@
+{% extends 'marketplace/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block body %}
+        <div class="container">
+            <div class ="row">
+                <div class="col-md-6">
+                    <img height="300px" src="{{ detail.product_image }}" class="card"/>
+                </div>
+                <div class="col-md-6">
+                    <h2>Product Name : {{ detail.product_name }}</h2>
+                    <h6>Product ID : {{ detail.product_id }}</h6>
+                    <h6>Product Category : {{ detail.product_category }}</h6>
+                    <h6>Product Stock : {{ detail.product_stock }}</h6>
+                    <h6>Product Price : ${{ detail.product_price }}</h6>
+                    <h6>Sale Price : ${{ detail.sale_price }}</h6>
+                    <h6>Product Description : {{ detail.description }}</h6>
+                    <h6>Product Modified Date : {{ detail.modified_date }}</h6>
+                    <h6>Seller Name : {{ detail.user_name }}</h6>
+                    {% if user.id == detail.user_name.id  %}
+                        <a href="{% url 'marketplace:delete_item' detail.product_id %}">Delete</a>
+                        <a href="{% url 'marketplace:update_item' detail.product_id %}">Update</a>
+                    {% else %}
+                        <a href="#">Buy</a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    {% endblock %}
+</body>
+</html>
